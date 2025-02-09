@@ -1,23 +1,16 @@
 import { AnimatedSection } from "@/components/animated-section";
+import { Form } from "@/components/form";
 import { Logo, LogoText } from "@/components/logo";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { QueryProvider } from "@/components/query-provider";
+import { AssetProtection, CashFlowPlanning, DebtPayoffPlanning, EducationPlanning, EstatePlanning, ExitPlanning, FeeBasedFinancialPlanning, InsurancePlanning, InvestmentPlanning, MajorLifestyleDecisionPlanning, RealEstateAnalysis, RetirementPlanning, RiskManagementAnalysis, TopOnePercent } from "@/components/service-icons";
+import { Linkedin, X } from "@/components/social-icons";
+import { buttonVariants } from "@/components/ui/button";
 import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { BusinessOwners, HighIncomeEarners, IndividualsAndFamilies, Retirees, TechProfessionals, You } from "@/components/who-we-serve-icons";
 import { WordRotate } from "@/components/word-rotate";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { Container } from "../components/container";
-import { AssetProtection, CashFlowPlanning, DebtPayoffPlanning, EducationPlanning, EstatePlanning, ExitPlanning, FeeBasedFinancialPlanning, InsurancePlanning, InvestmentPlanning, MajorLifestyleDecisionPlanning, RealEstateAnalysis, RetirementPlanning, RiskManagementAnalysis, TopOnePercent } from "@/components/service-icons";
-import { BusinessOwners, HighIncomeEarners, IndividualsAndFamilies, Retirees, TechProfessionals, You } from "@/components/who-we-serve-icons";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Linkedin, X } from "@/components/social-icons";
-import { Form } from "@/components/form";
-import { QueryProvider } from "@/components/query-provider";
-
-const words = ['entrepreneurs', 'business owners', 'high net worth individuals', 'innovators', 'tech professionals', 'attorneys', 'retirees']
 
 export default function Home() {
   return (
@@ -36,7 +29,10 @@ export default function Home() {
                   <Link href="#services" className={buttonVariants({ variant: "link" })}>Services</Link>
                 </li>
                 <li>
-                  <Link href="#about" className={buttonVariants({ variant: "link" })}>Pricing</Link>
+                  <Link href="#pricing" className={buttonVariants({ variant: "link" })}>Pricing</Link>
+                </li>
+                <li>
+                  <Link href="#who-we-serve" className={buttonVariants({ variant: "link" })}>Who We Serve</Link>
                 </li>
                 <li>
                   <Link href="#contact" className={cn(buttonVariants({ variant: "outline" }))}>Get A Free Consultation</Link>
@@ -62,21 +58,28 @@ export default function Home() {
                     <AnimatedSection initial={{ opacity: 0, y: 12 }} delay={0.05}>
                       <li>
                         <SheetClose asChild>
-                          <Link className={cn(buttonVariants({ variant: "link" }), "text-xl")} href="/#services">Services</Link>
+                          <Link className={cn(buttonVariants({ variant: "link" }), "text-xl")} href="#services">Services</Link>
                         </SheetClose>
                       </li>
                     </AnimatedSection>
                     <AnimatedSection initial={{ opacity: 0, y: 12 }} delay={0.1}>
                       <li>
                         <SheetClose asChild>
-                          <Link className={cn(buttonVariants({ variant: "link" }), "text-xl")} href="/#pricing">Pricing</Link>
+                          <Link className={cn(buttonVariants({ variant: "link" }), "text-xl")} href="#pricing">Pricing</Link>
+                        </SheetClose>
+                      </li>
+                    </AnimatedSection>
+                    <AnimatedSection initial={{ opacity: 0, y: 12 }} delay={0.1}>
+                      <li>
+                        <SheetClose asChild>
+                          <Link className={cn(buttonVariants({ variant: "link" }), "text-xl")} href="#who-we-serve">Who We Serve</Link>
                         </SheetClose>
                       </li>
                     </AnimatedSection>
                     <AnimatedSection initial={{ opacity: 0, y: 12 }} delay={0.2}>
                       <li>
                         <SheetClose asChild>
-                          <Link className={cn(buttonVariants({ variant: "default" }), "group")} href="/#consultation"><span className="h-0.5 w-2.5 bg-dark-green group-hover:w-6 transition-all duration-300"></span><span className="ml-3">Get Free Consultation</span></Link>
+                          <Link className={cn(buttonVariants({ variant: "default" }), "group")} href="#contact"><span className="h-0.5 w-2.5 bg-dark-green group-hover:w-6 transition-all duration-300"></span><span className="ml-3">Get Free Consultation</span></Link>
                         </SheetClose>
                       </li>
                     </AnimatedSection>
@@ -88,17 +91,17 @@ export default function Home() {
         </Container>
 
         <Container className="max-w-none flex flex-col xl:flex-row px-0 relative mt-6 xl:mt-0 xl:space-x-16 xl:pt-20 xl:pb-36 xl:justify-between">
-          <div className="text-foreground text-center xl:text-left xl:max-w-[640px]">
-            <h1 className="min-h-[3lh] sm:min-h-[2lh] text-balance">
+          <div className="text-foreground text-center xl:text-left xl:max-w-[640px] px-6 xl:px-0">
+            <h1 className="min-h-[3lh] sm:min-h-[2lh]">
               <span>Strategic Wealth Management for</span><br />
-              <WordRotate className="text-green min-h-24" words={words} />
+              <WordRotate />
             </h1>
             <div className="mt-2.5 xl:mt-6 text-base xl:text-xl">
               <p className="text-foreground/70">Maximize growth potential and minimize tax burden with proven strategies <br className="xl:hidden" /><span className="text-foreground">from Top 1% financial experts.</span></p>
             </div>
             <div className="mt-4 xl:mt-14 flex flex-col gap-[14px] justify-center items-center max-w-[85%] mx-auto xl:mx-0 xl:items-start xl:flex-row xl:justify-start">
-              <Link href="/contact" className={cn(buttonVariants({ variant: "default", size: "lg" }), "w-full sm:w-auto group items-center")}> <span className="h-0.5 w-2.5 bg-dark-green group-hover:w-6 transition-all duration-300"></span><span className="ml-3">Get Free Consultation</span></Link>
-              <Link href="/contact" className={cn(buttonVariants({ variant: "outline", size: "lg" }), "w-full sm:w-auto")}>Pricing Plans</Link>
+              <Link href="#contact" className={cn(buttonVariants({ variant: "default", size: "lg" }), "w-full sm:w-auto group items-center")}> <span className="h-0.5 w-2.5 bg-dark-green group-hover:w-6 transition-all duration-300"></span><span className="ml-3">Get Free Consultation</span></Link>
+              <Link href="#pricing" className={cn(buttonVariants({ variant: "outline", size: "lg" }), "w-full sm:w-auto")}>Pricing Plans</Link>
             </div>
           </div>
 
@@ -120,7 +123,7 @@ export default function Home() {
         </Container>
       </div>
 
-      <section className="relative bg-gray-100 py-9 xl:py-[92px] overflow-hidden">
+      <section id="services" className="relative bg-gray-100 py-9 xl:py-[92px] overflow-hidden">
         <img className="absolute inset-0 bg-cover w-full h-full" src="/services-bg.png" alt="" />
         <Container className="overflow-hidden relative">
           <div className="relative">
@@ -141,15 +144,15 @@ export default function Home() {
                 </li>
               ))}
             </ul>
-            <div className="mt-6 text-center">
+            <div className="mt-6 xl:mt-20 text-center">
               <p className="text-2xl">Want to know more about our services?</p>
-              <Link href="/contact" className={cn(buttonVariants({ variant: "default", size: "lg" }), "mt-4 group")}><span className="h-0.5 w-2.5 bg-dark-green group-hover:w-6 transition-all duration-300"></span><span className="ml-3">Get Free Consultation</span></Link>
+              <Link href="#contact" className={cn(buttonVariants({ variant: "default", size: "lg" }), "mt-4 group")}><span className="h-0.5 w-2.5 bg-dark-green group-hover:w-6 transition-all duration-300"></span><span className="ml-3">Get Free Consultation</span></Link>
             </div>
           </div>
         </Container>
       </section>
 
-      <section className="pt-8 pb-10 xl:pt-24 xl:pb-20  bg-cover" style={{ backgroundImage: "url('/pricing-bg-xl.png')" }}>
+      <section id="pricing" className="pt-8 pb-10 xl:pt-24 xl:pb-20  bg-cover" style={{ backgroundImage: "url('/pricing-bg-xl.png')" }}>
         <Container>
           <div className="flex flex-col xl:flex-row xl:space-x-24 dark">
             <h2 className="text-foreground xl:max-w-[400px] w-full">Our Transparent<br className="hidden xl:block" />Pricing Options</h2>
@@ -231,13 +234,13 @@ export default function Home() {
             </div>
 
             <div className="mt-11 text-center">
-              <Link href="/contact" className={cn(buttonVariants({ variant: "default", size: "lg" }), "group")}><span className="h-0.5 w-2.5 bg-dark-green group-hover:w-6 transition-all duration-300"></span><span className="ml-3">Get Free Consultation</span></Link>
+              <Link href="#contact" className={cn(buttonVariants({ variant: "default", size: "lg" }), "group")}><span className="h-0.5 w-2.5 bg-dark-green group-hover:w-6 transition-all duration-300"></span><span className="ml-3">Get Free Consultation</span></Link>
             </div>
           </div>
         </Container>
       </section>
 
-      <section className="py-8 xl:py-24 bg-gray-100 min-h-screen bg-cover xl:bg-center" style={{ backgroundImage: "url('/who-bg.png')" }}>
+      <section id="who-we-serve" className="py-8 xl:py-24 bg-gray-100 min-h-screen bg-cover xl:bg-center" style={{ backgroundImage: "url('/who-bg.png')" }}>
         <Container>
           <div className="flex flex-col xl:flex-row xl:space-x-24">
             <h2 className="xl:max-w-[290px] w-full">Who We <br className="hidden xl:block" />Serve</h2>
@@ -259,12 +262,12 @@ export default function Home() {
             ))}
           </ul>
           <div className="mt-7 xl:mt-16 text-center">
-            <Link href="/contact" className={cn(buttonVariants({ variant: "default", size: "lg" }), "group")}><span className="h-0.5 w-2.5 bg-dark-green group-hover:w-6 transition-all duration-300"></span><span className="ml-3">Get Free Consultation</span></Link>
+            <Link href="#contact" className={cn(buttonVariants({ variant: "default", size: "lg" }), "group")}><span className="h-0.5 w-2.5 bg-dark-green group-hover:w-6 transition-all duration-300"></span><span className="ml-3">Get Free Consultation</span></Link>
           </div>
         </Container>
       </section>
 
-      <section className="py-8 xl:pb-12 xl:pt-24 bg-cover bg-dark-green bg-[url('/footer-bg-sm.png')] lg:bg-[url('/footer-bg.png')]">
+      <section id="contact" className="py-8 xl:pb-12 xl:pt-24 bg-cover bg-dark-green bg-[url('/footer-bg-sm.png')] lg:bg-[url('/footer-bg.png')]">
         <div className="pb-10 xl:pb-24 border-b border-background/20">
           <Container className="dark">
             <div className="flex flex-col xl:flex-row xl:space-x-24 dark xl:justify-between">
