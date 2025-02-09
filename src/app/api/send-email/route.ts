@@ -1,7 +1,6 @@
-import { NextResponse } from 'next/server';
-import sgMail from '@sendgrid/mail';
-import { z } from 'zod';
 import { schema } from '@/schema/mail';
+import sgMail from '@sendgrid/mail';
+import { NextResponse } from 'next/server';
 // Validate SendGrid API key
 if (!process.env.SENDGRID_API_KEY) {
     console.error('SENDGRID_API_KEY is not set in environment variables');
