@@ -14,6 +14,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Linkedin, X } from "@/components/social-icons";
+import { Form } from "@/components/form";
+import { QueryProvider } from "@/components/query-provider";
 
 const words = ['entrepreneurs', 'business owners', 'high net worth individuals', 'innovators', 'tech professionals', 'attorneys', 'retirees']
 
@@ -74,7 +76,7 @@ export default function Home() {
                     <AnimatedSection initial={{ opacity: 0, y: 12 }} delay={0.2}>
                       <li>
                         <SheetClose asChild>
-                          <Link className={cn(buttonVariants({ variant: "default" }), "w-full md:w-auto group")} href="/#consultation"><span className="h-0.5 w-2.5 bg-dark-green group-hover:w-6 transition-all duration-300"></span><span className="ml-3">Get Free Consultation</span></Link>
+                          <Link className={cn(buttonVariants({ variant: "default" }), "group")} href="/#consultation"><span className="h-0.5 w-2.5 bg-dark-green group-hover:w-6 transition-all duration-300"></span><span className="ml-3">Get Free Consultation</span></Link>
                         </SheetClose>
                       </li>
                     </AnimatedSection>
@@ -151,7 +153,7 @@ export default function Home() {
         <Container>
           <div className="flex flex-col xl:flex-row xl:space-x-24 dark">
             <h2 className="text-foreground xl:max-w-[400px] w-full">Our Transparent<br className="hidden xl:block" />Pricing Options</h2>
-            <p className="text-foreground/70 mt-1 xl:mt-0 xl:first-letter:pl-24 xl:text-2xl xl:flex-1">We offer two distinct pricing models designed to fit your specific needs and preferences: Assets Under Management (AUM) and Fee-Based Financial Planning. Both options are transparent and straightforward, ensuring you know exactly what you're paying for.</p>
+            <p className="text-foreground/70 mt-1 xl:mt-0 xl:first-letter:pl-24 xl:text-2xl xl:flex-1">We offer two distinct pricing models designed to fit your specific needs and preferences: Assets Under Management (AUM) and Fee-Based Financial Planning. Both options are transparent and straightforward, ensuring you know exactly what you&apos;re paying for.</p>
           </div>
 
           <div className="mt-6 xl:mt-16 grid gap-4 xl:gap-5">
@@ -204,7 +206,7 @@ export default function Home() {
               <div className="bg-background rounded-[24px] p-6 xl:p-8 relative xl:flex xl:space-x-24">
                 <div className="xl:max-w-[480px] w-full">
                   <h3 className="text-3xl xl:text-[40px]/[44px] font-medium">Fee-Based Financial Planning</h3>
-                  <p className="mt-2 xl:mt-4 xl:text-xl">Our Fee-Based Financial Planning option is perfect for those who prefer a fixed-fee approach. This plan is based on your household's gross income and provides comprehensive financial planning services.</p>
+                  <p className="mt-2 xl:mt-4 xl:text-xl">Our Fee-Based Financial Planning option is perfect for those who prefer a fixed-fee approach. This plan is based on your household&apos;s gross income and provides comprehensive financial planning services.</p>
                 </div>
                 <div className="flex-1">
                   <div className="mt-4 xl:mt-0 bg-gray-100 rounded-xl px-4 xl:p-6 py-[14px] relative flex-1">
@@ -267,127 +269,12 @@ export default function Home() {
           <Container className="dark">
             <div className="flex flex-col xl:flex-row xl:space-x-24 dark xl:justify-between">
               <h2 className="text-foreground xl:max-w-[400px] w-full">Schedule a<br className="hidden xl:block" />Consultation</h2>
-              <p className="text-foreground/70 mt-1 xl:mt-0 xl:first-letter:pl-24 xl:text-2xl xl:flex-1 xl:max-w-[40ch]">Take the first step towards securing your financial future. Fill out the form below and we'll get back to you within 24 hours.</p>
+              <p className="text-foreground/70 mt-1 xl:mt-0 xl:first-letter:pl-24 xl:text-2xl xl:flex-1 xl:max-w-[40ch]">Take the first step towards securing your financial future. Fill out the form below and we&apos;ll get back to you within 24 hours.</p>
             </div>
             <div className="mt-6 xl:mt-16">
-              <form>
-                <div className="grid gap-5 xl:grid-cols-4">
-                  <div className="space-y-1">
-                    <Label>your name</Label>
-                    <Input placeholder="Your name" required />
-                  </div>
-                  <div className="space-y-1">
-                    <Label>email</Label>
-                    <Input placeholder="Your email" required />
-                  </div>
-                  <div className="space-y-1">
-                    <Label>phone number</Label>
-                    <Input placeholder="Your phone number" required />
-                  </div>
-                  <div className="space-y-1">
-                    <Label>age</Label>
-                    <Input placeholder="Your age" required defaultValue={32} type="number" />
-                  </div>
-                  <div className="space-y-1">
-                    <Label>preferred contact method</Label>
-                    <Select required>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select a contact method" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="email">Email</SelectItem>
-                        <SelectItem value="phone">Phone</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div className="space-y-1">
-                    <Label>state</Label>
-                    <Select required>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select a state" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="AL">Alabama</SelectItem>
-                        <SelectItem value="AK">Alaska</SelectItem>
-                        <SelectItem value="AZ">Arizona</SelectItem>
-                        <SelectItem value="AR">Arkansas</SelectItem>
-                        <SelectItem value="CA">California</SelectItem>
-                        <SelectItem value="CO">Colorado</SelectItem>
-                        <SelectItem value="CT">Connecticut</SelectItem>
-                        <SelectItem value="DE">Delaware</SelectItem>
-                        <SelectItem value="FL">Florida</SelectItem>
-                        <SelectItem value="GA">Georgia</SelectItem>
-                        <SelectItem value="HI">Hawaii</SelectItem>
-                        <SelectItem value="ID">Idaho</SelectItem>
-                        <SelectItem value="IL">Illinois</SelectItem>
-                        <SelectItem value="IN">Indiana</SelectItem>
-                        <SelectItem value="IA">Iowa</SelectItem>
-                        <SelectItem value="KS">Kansas</SelectItem>
-                        <SelectItem value="KY">Kentucky</SelectItem>
-                        <SelectItem value="LA">Louisiana</SelectItem>
-                        <SelectItem value="ME">Maine</SelectItem>
-                        <SelectItem value="MD">Maryland</SelectItem>
-                        <SelectItem value="MA">Massachusetts</SelectItem>
-                        <SelectItem value="MI">Michigan</SelectItem>
-                        <SelectItem value="MN">Minnesota</SelectItem>
-                        <SelectItem value="MS">Mississippi</SelectItem>
-                        <SelectItem value="MO">Missouri</SelectItem>
-                        <SelectItem value="MT">Montana</SelectItem>
-                        <SelectItem value="NE">Nebraska</SelectItem>
-                        <SelectItem value="NV">Nevada</SelectItem>
-                        <SelectItem value="NH">New Hampshire</SelectItem>
-                        <SelectItem value="NJ">New Jersey</SelectItem>
-                        <SelectItem value="NM">New Mexico</SelectItem>
-                        <SelectItem value="NY">New York</SelectItem>
-                        <SelectItem value="NC">North Carolina</SelectItem>
-                        <SelectItem value="ND">North Dakota</SelectItem>
-                        <SelectItem value="OH">Ohio</SelectItem>
-                        <SelectItem value="OK">Oklahoma</SelectItem>
-                        <SelectItem value="OR">Oregon</SelectItem>
-                        <SelectItem value="PA">Pennsylvania</SelectItem>
-                        <SelectItem value="RI">Rhode Island</SelectItem>
-                        <SelectItem value="SC">South Carolina</SelectItem>
-                        <SelectItem value="SD">South Dakota</SelectItem>
-                        <SelectItem value="TN">Tennessee</SelectItem>
-                        <SelectItem value="TX">Texas</SelectItem>
-                        <SelectItem value="UT">Utah</SelectItem>
-                        <SelectItem value="VT">Vermont</SelectItem>
-                        <SelectItem value="VA">Virginia</SelectItem>
-                        <SelectItem value="WA">Washington</SelectItem>
-                        <SelectItem value="WV">West Virginia</SelectItem>
-                        <SelectItem value="WI">Wisconsin</SelectItem>
-                        <SelectItem value="WY">Wyoming</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div className="space-y-1 xl:col-span-2">
-                    <Label>income range</Label>
-                    <Select required>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select an income range" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="0-100K">$0 - $100,000</SelectItem>
-                        <SelectItem value="101K-150K">$101,000 - $150,000</SelectItem>
-                        <SelectItem value="151K-250K">$151,000 - $250,000</SelectItem>
-                        <SelectItem value="251K-500K">$251,000 - $500,000</SelectItem>
-                        <SelectItem value="501K+">$501,000+</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div className="space-y-1 xl:col-span-4">
-                    <Label>Please let me know anything that would be helpful for our meeting</Label>
-                    <Textarea className="placeholder:text-dark-green/75" placeholder="Your message" rows={4} />
-                  </div>
-                </div>
-                <div className="flex flex-col gap-6 mt-6 xl:mt-14 xl:flex-row xl:gap-10">
-                  <div className="flex space-x-3 items-center">
-                    <Checkbox id="privacy" />
-                    <Label className="[text-transform:none] text-base" htmlFor="privacy">I agree to the <Link className="text-green" href="/privacy">Privacy Policy</Link></Label>
-                  </div>
-                  <Button className="xl:order-first group" size="lg"><span className="h-0.5 w-2.5 bg-dark-green group-hover:w-6 transition-all duration-300"></span><span className="ml-3">Get Free Consultation</span></Button>
-                </div>
-              </form>
+              <QueryProvider>
+                <Form />
+              </QueryProvider>
             </div>
           </Container>
         </div>
