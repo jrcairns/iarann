@@ -9,10 +9,12 @@ import { Select, SelectValue, SelectTrigger, SelectContent, SelectItem } from ".
 import { Textarea } from "./ui/textarea"
 import { useMutation } from "@tanstack/react-query"
 import { Loader2, CheckCircle, AlertCircle } from "lucide-react"
+import { schema } from "@/schema/mail"
+import { z } from "zod"
 
 export function Form() {
     const { mutate, isPending, error, isSuccess } = useMutation({
-        mutationFn: async (data: any) => {
+        mutationFn: async (data: z.infer<typeof schema>) => {
             const response = await fetch("/api/send-email", {
                 method: "POST",
                 body: JSON.stringify(data),
@@ -30,8 +32,16 @@ export function Form() {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         const formData = new FormData(e.target as HTMLFormElement)
+
         const data = Object.fromEntries(formData)
-        mutate(data)
+
+        const parsedData = schema.safeParse(data)
+
+        if (!parsedData.success) {
+            throw new Error(parsedData.error.message)
+        }
+
+        mutate(parsedData.data)
     }
 
     return (

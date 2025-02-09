@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import sgMail from '@sendgrid/mail';
 import { z } from 'zod';
+import { schema } from '@/schema/mail';
 // Validate SendGrid API key
 if (!process.env.SENDGRID_API_KEY) {
     console.error('SENDGRID_API_KEY is not set in environment variables');
@@ -14,17 +15,6 @@ if (!process.env.SENDER_EMAIL) {
 }
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY || '');
-
-const schema = z.object({
-    name: z.string().min(1, { message: "Name is required" }),
-    email: z.string().email({ message: "Invalid email address" }),
-    phone: z.string().min(1, { message: "Phone number is required" }),
-    state: z.string().min(1, { message: "State is required" }),
-    age: z.string().min(1, { message: "Age is required" }),
-    incomeRange: z.string().min(1, { message: "Income range is required" }),
-    contactMethod: z.string().min(1, { message: "Contact method is required" }),
-    message: z.string().optional(),
-})
 
 export async function POST(request: Request) {
 
